@@ -1,0 +1,38 @@
+<script src="../KEY.js/KEY.js"></script>
+
+
+<dom-module id="hash-key"></dom-module>
+
+<script>
+    Polymer({
+        is: "hash-key",
+        properties: {
+            key: {
+                type: String,
+                observer: 'keyChange'
+            },
+            hash: {
+                type: String,
+                observer: 'hashChange'
+            }
+        },
+        keyChange: function (old, now) {
+            KEY(old).then(0);
+            KEY(this.key).then(this.setHash.bind(this));
+            // KEY(this.key).then(function(ev){
+            //     document.location.hash = '#' + this.hash;
+            // }.bind(this));
+        },
+        hashChange: function(){
+            KEY(this.key).then(this.setHash.bind(this));
+            // KEY(this.key).then(function(ev){
+            // document.location.hash = '#' + this.hash;
+            // }.bind(this));
+        },
+        setHash: function(){
+            document.location.hash = '#' + this.hash;
+            // if(this.hash) document.location.hash = '#' + this.hash;
+            // else document.location.hash = '';
+        }
+    });
+</script>

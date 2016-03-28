@@ -1,0 +1,48 @@
+
+<dom-module id="hash-route">
+    <template>
+        <content></content>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: "hash-route",
+        properties: {
+            regex: {
+                type: String,
+                observer: 'urlChange'
+            },
+            p1:{ notify: true },
+            p2:{ notify: true },
+            p3:{ notify: true },
+            p4:{ notify: true },
+            p5:{ notify: true },
+        },
+
+        ready: function () {
+            this.hidden = true;
+            window.addEventListener('hashchange',this.match.bind(this));
+            this.match(); // is there another way??
+        },
+        urlChange: function(event){
+            this.match();
+        },
+        match: function(){
+            var hash = document.location.hash;
+            if(hash[0]==='#') hash = hash.substr(1);
+            if(hash[0]==='!') hash = hash.substr(1);
+            var regex = new RegExp('^'+this.regex+'$');
+            var match = hash.match(regex);
+            if(match) {
+                this.set('p1',match[1]);
+                this.set('p2',match[2]);
+                this.set('p3',match[3]);
+                this.set('p4',match[4]);
+                this.set('p5',match[5]);
+            }
+            this.hidden = match ? false : true;
+            if(match) console.log('HASH-ROUTE match:', hash, regex, match,this.hide);
+        }
+    });
+</script>
