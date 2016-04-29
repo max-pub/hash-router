@@ -1,9 +1,9 @@
 
 <dom-module id="hash-route">
     <template>
-        <!-- <template is="dom-if" if="{{showDOM}}"> -->
+        <template is="dom-if" if="{{DOM}}" restamp='true'>
             <content></content>
-        <!-- </template> -->
+        </template>
     </template>
 </dom-module>
 
@@ -15,7 +15,10 @@
                 type: String,
                 observer: 'urlChange'
             },
-            // mode: String,
+            mode: {
+                type:String,
+                value: 'css'
+            },
             p1:{ notify: true },
             p2:{ notify: true },
             p3:{ notify: true },
@@ -24,10 +27,20 @@
         },
 
         ready: function () {
-            // this.showDOM = true;
-            this.hidden = true;
+            this.DOM = true;
+            this.hide();
             window.addEventListener('hashchange',this.match.bind(this));
             this.match(); // is there another way??
+        },
+        show: function(){
+            if(this.mode.toLowerCase()=='dom') this.DOM = true;
+            this.hidden = false;
+            // console.log("HASH",this.regex,this.DOM);
+        },
+        hide: function(){
+            if(this.mode.toLowerCase()=='dom') this.DOM = false;
+            this.hidden = true;
+            // console.log("HASH",this.regex,this.DOM);
         },
         urlChange: function(event){
             this.match();
@@ -45,7 +58,9 @@
                 this.set('p4',match[4]);
                 this.set('p5',match[5]);
             }
-            this.hidden = match ? false : true;
+            if(match) this.show();
+            else this.hide();
+            // this.hidden = match ? false : true;
             // if(match) console.log('HASH-ROUTE match:', hash, regex);
         }
     });
