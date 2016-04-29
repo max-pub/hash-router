@@ -1,7 +1,9 @@
 
 <dom-module id="hash-route">
     <template>
-        <content></content>
+        <!-- <template is="dom-if" if="{{showDOM}}"> -->
+            <content></content>
+        <!-- </template> -->
     </template>
 </dom-module>
 
@@ -13,6 +15,7 @@
                 type: String,
                 observer: 'urlChange'
             },
+            // mode: String,
             p1:{ notify: true },
             p2:{ notify: true },
             p3:{ notify: true },
@@ -21,6 +24,7 @@
         },
 
         ready: function () {
+            // this.showDOM = true;
             this.hidden = true;
             window.addEventListener('hashchange',this.match.bind(this));
             this.match(); // is there another way??
@@ -42,7 +46,7 @@
                 this.set('p5',match[5]);
             }
             this.hidden = match ? false : true;
-            if(match) console.log('HASH-ROUTE match:', hash, regex, match,this.hide);
+            // if(match) console.log('HASH-ROUTE match:', hash, regex);
         }
     });
 </script>
