@@ -17,14 +17,16 @@
             }
         },
         keyChange: function (old, now) {
-            KEY(old).then(0);
-            KEY(this.key).then(this.setHash.bind(this));
+            // KEY(old).then(0);
+            KEY(old, 0);
+            KEY(this.key, this.setHash.bind(this));
+            // KEY(this.key).then(this.setHash.bind(this));
             // KEY(this.key).then(function(ev){
             //     document.location.hash = '#' + this.hash;
             // }.bind(this));
         },
         hashChange: function(){
-            KEY(this.key).then(this.setHash.bind(this));
+            KEY(this.key, this.setHash.bind(this));
             // KEY(this.key).then(function(ev){
             // document.location.hash = '#' + this.hash;
             // }.bind(this));
