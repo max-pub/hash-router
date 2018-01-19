@@ -1,5 +1,5 @@
 window.addEventListener('hashchange', function() {
-	var links = document.getElementsByTagName('a');
+	var links = document.links; //
 	var hash = document.location.hash;
 	lll = links;
 	for (var i = 0; i < links.length; i++) {
