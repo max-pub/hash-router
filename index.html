@@ -14,8 +14,8 @@
 <script src='hash.links.js'></script>
 
 <script>
-	HASHCALL(/^(-?\d+\.\d+),(-?\d+\.\d+)$/, ([lat, lon]) => console.log('match', lat, '-', lon) );
-	HASHCALL(/^abc$/, ([a, b]) => console.log('match', a) );
+	HASHCALL(/^(-?\d+\.\d+),(-?\d+\.\d+)$/, (lat, lon) => console.log('match', lat, '-', lon) );
+	HASHCALL(/^abc$/, () => console.log('ABC') );
 </script>
 
 <style>
