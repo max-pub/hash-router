@@ -1,4 +1,19 @@
-<script src='HASH.js'></script>
+<a href='#abc'>abc</a>
+<a href='#xyz'>xyz</a>
+<a href='#12.12,23.23'>12,23</a>
+
+<div hash='abc'>ABCCC</div>
+<div hash='xyz'>XYZZZ</div>
+
+<script src='hash.js'></script>
+<script src='hash.view.js'></script>
+<script src='hash.links.js'></script>
+
 <script>
-	HASH.register("(-?\\d+\\.\\d+),(-?\\d+\\.\\d+)", (a, b) => console.log('match', a, '-', b));
+	HASH(/^(-?\d+\.\d+),(-?\d+\.\d+)$/, ([a, b]) => console.log('match', a, '-', b) );
+	// HASH(/^abc$/, ([a, b]) => console.log('match', a) );
 </script>
+
+<style>
+.activeHash{color: red;}
+</style>
