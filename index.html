@@ -1,19 +1,27 @@
-<a href='#abc'>abc</a>
-<a href='#xyz'>xyz</a>
-<a href='#12.12,23.23'>12,23</a>
+<nav>
+	<a href='#abc'>abc</a>
+	<a href='#xyz'>xyz</a>
+	<a href='#9.456,12.234'>Location One</a>
+	<a href='#34.123,47.789'>Location Two</a>
+</nav>
 
 <div hash='abc'>ABCCC</div>
 <div hash='xyz'>XYZZZ</div>
+<div hash='^(-?\d+\.\d+),(-?\d+\.\d+)$'>Location Page</div>
 
-<script src='hash.js'></script>
+<script src='hash.call.js'></script>
 <script src='hash.view.js'></script>
 <script src='hash.links.js'></script>
 
 <script>
-	HASH(/^(-?\d+\.\d+),(-?\d+\.\d+)$/, ([a, b]) => console.log('match', a, '-', b) );
-	// HASH(/^abc$/, ([a, b]) => console.log('match', a) );
+	HASHCALL(/^(-?\d+\.\d+),(-?\d+\.\d+)$/, ([lat, lon]) => console.log('match', lat, '-', lon) );
+	HASHCALL(/^abc$/, ([a, b]) => console.log('match', a) );
 </script>
 
 <style>
+*{font-family: helvetica;}
+nav{background: #333; position: absolute; left: 0; top:0; bottom:0; width: 200px;}
+a {text-decoration: none; color: white; display: block; margin: 5px;}
 .activeHash{color: red;}
+div{position: absolute; left: 200px;}
 </style>
