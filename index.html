@@ -6,8 +6,18 @@
 </nav>
 
 <div hash='abc'>ABCCC</div>
-<div hash='xyz'>XYZZZ</div>
-<div hash='^(-?\d+\.\d+),(-?\d+\.\d+)$'>Location Page</div>
+<div hash='^xyz' hashcall="console.log('yeah')">
+	XYZZZ
+	<a href='#xyz/one'>one</a>
+	<a href='#xyz/two'>two</a>
+	<div hash='xyz/one'>ONE</div>
+	<div hash='xyz/two'>TWO</div>
+</div>
+<div hash='^(-?\d+\.\d+),(-?\d+\.\d+)'>
+	Location Page
+	<a href='#9.456,12.234/one'>next</a>
+	<div hash='^(-?\d+\.\d+),(-?\d+\.\d+)\/one' hashcall='console.log("nice")'>NEXT</div>
+</div>
 
 <script src='hash.call.js'></script>
 <script src='hash.view.js'></script>
@@ -21,7 +31,7 @@
 <style>
 *{font-family: helvetica;}
 nav{background: #333; position: absolute; left: 0; top:0; bottom:0; width: 200px;}
-a {text-decoration: none; color: white; display: block; margin: 5px;}
+nav a {text-decoration: none; color: white; display: block; margin: 5px;}
 .activeHash{color: red;}
 div{position: absolute; left: 200px;}
 </style>

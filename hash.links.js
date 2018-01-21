@@ -3,7 +3,7 @@ HASHLINKS = () => {
 	var hash = document.location.hash;
 	for (var i = 0; i < links.length; i++) {
 		var href = links[i].getAttribute('href');
-		if (href == hash) links[i].classList.add('activeHash');
+		if (hash.startsWith(href)) links[i].classList.add('activeHash');
 		else links[i].classList.remove('activeHash');
 	}
 }
