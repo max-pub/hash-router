@@ -5,27 +5,31 @@
 	<a href='#34.123,47.789'>Location Two</a>
 </nav>
 
-<div hash='abc'>ABCCC</div>
-<div hash='^xyz' hashcall="console.log('yeah')">
-	XYZZZ
-	<a href='#xyz/one'>one</a>
-	<a href='#xyz/two'>two</a>
-	<div hash='xyz/one'>ONE</div>
-	<div hash='xyz/two'>TWO</div>
-</div>
-<div hash='^(-?\d+\.\d+),(-?\d+\.\d+)'>
-	Location Page
-	<a href='#9.456,12.234/one'>next</a>
-	<div hash='^(-?\d+\.\d+),(-?\d+\.\d+)\/one' hashcall='console.log("nice")'>NEXT</div>
-</div>
+<main>
+	<div hash='abc'>ABCCC</div>
+	<div hash='^xyz' hashcall="console.log('XYZ-call')">
+		XYZZZ
+		<a href='#xyz/one'>one</a>
+		<a href='#xyz/two'>two</a>
+		<div hash='xyz/one'>ONE</div>
+		<div hash='xyz/two'>TWO</div>
+	</div>
+	<div hash='^(-?\d+\.\d+),(-?\d+\.\d+)'>
+		Location Page
+		<a href='#9.456,12.234/one'>next</a>
+		<div hash='^(-?\d+\.\d+),(-?\d+\.\d+)\/one' hashcall='console.log("nice")'>NEXT</div>
+	</div>
+	<hash-view match='^abc'>DONK</hash-view>
+</main>
 
 <script src='hash.call.js'></script>
 <script src='hash.view.js'></script>
+<script src='hash-view.js'></script>
 <script src='hash.links.js'></script>
 
 <script>
-	HASHCALL(/^(-?\d+\.\d+),(-?\d+\.\d+)$/, (lat, lon) => console.log('match', lat, '-', lon) );
-	HASHCALL(/^abc$/, () => console.log('ABC') );
+	// HASHCALL(/^(-?\d+\.\d+),(-?\d+\.\d+)$/, (lat, lon) => console.log('match', lat, '-', lon) );
+	// HASHCALL(/^abc$/, () => console.log('ABC') );
 </script>
 
 <style>
@@ -33,5 +37,5 @@
 nav{background: #333; position: absolute; left: 0; top:0; bottom:0; width: 200px;}
 nav a {text-decoration: none; color: white; display: block; margin: 5px;}
 .activeHash{color: red;}
-div{position: absolute; left: 200px;}
+main{position: absolute; left: 220px;}
 </style>
